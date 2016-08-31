@@ -1,0 +1,1 @@
+var game = require("./game.js");				//The randomly chosen word comes from game.js
