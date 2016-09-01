@@ -1,7 +1,23 @@
-var words = ["QUEEN", "METALLICA", "ACDC", "JOURNEY", "REM", "POISON", "BLONDIE", "GENESIS", "DEVO"];
+//This JS picks a word and exports the word's letters to word.js and letter.js
 
-var randNum = Math.floor(Math.random()*words.length);
+var wordStuff = {
+	words: ["QUEEN", "METALLICA", "ACDC", "JOURNEY", "REM", "POISON", "BLONDIE", "GENESIS", "DEVO"],
+	randNum: 0,
+	chosenWord: "",
+	wordLetters:[],
 
-var chosenWord = words[randomNum];
+	pickWord: function(){
+		this.randNum = Math.floor(Math.random()*this.words.length);
+		this.chosenWord = this.words[this.randNum];
+		this.wordLetters = this.chosenWord.split("");
+	}
 
-var wordLetters = chosenWord.split("");
+};
+
+
+wordStuff.pickWord();
+
+exports.toWordJS = wordStuff.wordLetters;
+exports.toLetterJS = wordStuff.wordLetters;
+
+
