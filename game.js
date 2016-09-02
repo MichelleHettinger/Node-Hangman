@@ -15,9 +15,7 @@ var wordStuff = {
 };
 
 
-wordStuff.pickWord();
-
 exports.toWordJS = wordStuff.wordLetters;
 exports.toLetterJS = wordStuff.wordLetters;
-
+exports.toMainJS = wordStuff.pickWord;
 

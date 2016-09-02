@@ -6,7 +6,7 @@ var wordLetters = game.toWordJS;
 
 
 var main = require("./main.js");				//The user input comes from main.js
-var currentLetter = main.toWordJS.toUpperCase();
+var currentLetter = main.toWordJS;
 
 var wordObject = {
 	allGuesses:[],
