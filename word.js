@@ -30,10 +30,16 @@ var wordObject = {
 		//Otherwise a match was found and isRepeat becomes true.
 		if (repeatCounter == 0){
 			this.isRepeat = false;
+
+			console.log("checking")
+			this.checkMatch();
 		}
 		else{
 			this.isRepeat = true;
+			this.checkMatch();
 		}
+
+
 	},
 	checkMatch: function (){
 		var matchCounter = 0;
@@ -49,30 +55,37 @@ var wordObject = {
 		//Otherwise a match was found and isMatch becomes true.
 		if (matchCounter == 0){
 			this.isMatch = false;
+			this.checkMatchRepeat();
 		}
 		else{
 			this.isMatch = true;
+			this.checkMatchRepeat();
 		}
 	},
 	checkMatchRepeat: function(){
 		//If the same key is pressed twice, it is removed from allGuesses.
 		if (this.isRepeat == true){
 			this.allGuesses.pop(main.toWordJS.currentLetter);
+
+			return true;
 		}
 		//Letter has not been guessed and was a wrong guess, put the this.currentLetter in incorrectGuesses.
 		if (this.isRepeat == false && this.isMatch == false){
 			this.incorrectGuesses.push(main.toWordJS.currentLetter);
 			this.guessesRemaining--;
+
+			return true;
 		}
 		//Letter has not been guessed and was a correct guess, put the this.currentLetter in correctGuesses.
 		if (this.isRepeat == false && this.isMatch == true){
 			this.correctGuesses.push(main.toWordJS.currentLetter);
 			this.guessesRemaining--;
-		}
 
-		console.log(this.correctGuesses);
+			return true;
+		}
 	},	
 }
+
 
 
 exports.toLetterJS = wordObject;

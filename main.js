@@ -36,10 +36,14 @@ var promptUser = function() {
            	playerStuff.userLetter = answers.letter;
             word.toMainJS.allGuesses.push(answers.letter);
 
+
+			
             word.toMainJS.checkRepeat();
-           	word.toMainJS.checkMatch();
-           	word.toMainJS.checkMatchRepeat();
-			console.log(word.toMainJS.allGuesses);
+
+           	if (word.toMainJS.checkMatchRepeat() == true){
+           		console.log(word.toMainJS.allGuesses);
+           	}
+
 			letter.toMainJS.displayNewGuess();
 
 
