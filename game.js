@@ -1,4 +1,6 @@
 //This JS picks a word and exports the word's letters to word.js and letter.js
+var letter = require("./letter.js");
+
 
 var wordStuff = {
 	words: ["QUEEN", "METALLICA", "ACDC", "JOURNEY", "REM", "POISON", "BLONDIE", "GENESIS", "DEVO"],
@@ -15,7 +17,7 @@ var wordStuff = {
 };
 
 
-exports.toWordJS = wordStuff.wordLetters;
-exports.toLetterJS = wordStuff.wordLetters;
-exports.toMainJS = wordStuff.pickWord;
+exports.toWordJS = wordStuff;
+exports.toLetterJS = wordStuff;
+exports.toMainJS = wordStuff;
 
