@@ -16,10 +16,26 @@ var playerStuff = {
 		promptUser();
 	},
 	startRound: function(){
-		game.toMainJS.pickWord();
-		console.log(game.toMainJS.chosenWord);
-		letter.toMainJS.displayNewGuess();
-       	promptUser();
+			this.roundComplete = false;
+
+			game.toMainJS.pickWord();
+			console.log(game.toMainJS.chosenWord);
+			letter.toMainJS.displayNewGuess();
+
+
+
+
+	},
+	resetVariables: function(){
+
+		word.toMainJS.allGuesses = [];
+		word.toMainJS.incorrectGuesses = [];
+		word.toMainJS.correctGuesses = [];
+		word.toMainJS.isMatch = null;
+		word.toMainJS.isRepeat = null;
+		word.toMainJS.guessesRemaining = 15;
+
+		console.log(this.roundComplete);
 	}
 }
 
@@ -40,21 +56,30 @@ var promptUser = function() {
 
 		console.log("--------------------------------- \n");
 
+		//Store the input letter and push it into an allGuesses array
        	playerStuff.userLetter = answers.letter;
         word.toMainJS.allGuesses.push(answers.letter);
 
+        //Check the user input against the random word
         word.toMainJS.checkRepeat();
 
-
+        //Display the letters or underscores for the random word
 		letter.toMainJS.displayNewGuess();
+
 
        	console.log("Guesses remaining: " + word.toMainJS.guessesRemaining);
 
+       	//Check to see if the game is still in progress
 		letter.toMainJS.checkProgress();
 
 		if (playerStuff.roundComplete == false){
-			console.log("ffffffffffffffff");
+			console.log("Round in progress");
+
 		    promptUser();
+		}
+		else if (playerStuff.roundComplete == true){
+			console.log("Round NOT in progress");
+			playerStuff.startRound();
 		}
 
     })

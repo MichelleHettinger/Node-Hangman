@@ -52,26 +52,30 @@ var displayObject = {
 		//If the counter is the length of the band name, the user has won.
 		if (counter == game.toLetterJS.wordLetters.length){
 
-			// main.toLetterJS.roundComplete = true;
-			console.log("zzzzzzzzzzzzzzzzz");
+			main.toLetterJS.roundComplete = true;
 			word.toLetterJS.winCount++;
 
 			console.log("\n You win!");
 			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
 			console.log("-------------------------------------");
-			main.toLetterJS.startRound();
 
+			main.toLetterJS.resetVariables();
+			main.toLetterJS.startRound();
 
 		}
 		//If the number of guesses remaining is zero, the user has lost.
 		if (word.toLetterJS.guessesRemaining == 0){
 
+			main.toLetterJS.roundComplete = true;
 			word.toLetterJS.loseCount++;
 
 			console.log("You lose!");
 			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
 			console.log("-------------------------------------");
+
+			main.toLetterJS.resetVariables();
 			main.toLetterJS.startRound();
+
 		}
 	}
 }
