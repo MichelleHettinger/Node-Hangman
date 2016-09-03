@@ -35,7 +35,44 @@ var displayObject = {
 			}
 		}
 
-		console.log(this.correctGuessesInOrder.join(" "));
+		console.log(this.correctGuessesInOrder.join(" ") + "\n");
+	},
+
+	checkProgress: function(){
+		var counter = 0;
+
+		//Loop a number of times equal to the length of the band name. 
+		//If a guess is equal to the the band letter at the same index, add 1 to the counter.
+		for (var i=0; i<game.toLetterJS.wordLetters.length; i++){
+			if (this.correctGuessesInOrder[i] == game.toLetterJS.wordLetters[i]){
+				counter++;
+			}
+		}
+
+		//If the counter is the length of the band name, the user has won.
+		if (counter == game.toLetterJS.wordLetters.length){
+
+			// main.toLetterJS.roundComplete = true;
+			console.log("zzzzzzzzzzzzzzzzz");
+			word.toLetterJS.winCount++;
+
+			console.log("\n You win!");
+			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
+			console.log("-------------------------------------");
+			main.toLetterJS.startRound();
+
+
+		}
+		//If the number of guesses remaining is zero, the user has lost.
+		if (word.toLetterJS.guessesRemaining == 0){
+
+			word.toLetterJS.loseCount++;
+
+			console.log("You lose!");
+			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
+			console.log("-------------------------------------");
+			main.toLetterJS.startRound();
+		}
 	}
 }
 

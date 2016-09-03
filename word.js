@@ -22,7 +22,7 @@ var wordObject = {
 		//Loop for the number of guesses previously made amount of times.
 		//If the current letter equals one from the array of allGuesses, the counter variable counts up one.
 		for (var i=0; i < this.allGuesses.length; i++){
-			if (main.toWordJS.currentLetter == this.allGuesses[i]){
+			if (main.toWordJS.userLetter == this.allGuesses[i]){
 				repeatCounter++;
 			}
 		}
@@ -30,8 +30,6 @@ var wordObject = {
 		//Otherwise a match was found and isRepeat becomes true.
 		if (repeatCounter == 0){
 			this.isRepeat = false;
-
-			console.log("checking")
 			this.checkMatch();
 		}
 		else{
@@ -47,7 +45,7 @@ var wordObject = {
 		//Loop for the band names length amount of times.
 		//If the guessed letter is equal to the the bands letter at a given index, the counter variable counts up one.
 		for (var i=0; i < game.toWordJS.wordLetters.length; i++){
-			if (main.toWordJS.currentLetter == game.toWordJS.wordLetters[i]){
+			if (main.toWordJS.userLetter == game.toWordJS.wordLetters[i]){
 				matchCounter++;
 			}
 		}
@@ -65,20 +63,20 @@ var wordObject = {
 	checkMatchRepeat: function(){
 		//If the same key is pressed twice, it is removed from allGuesses.
 		if (this.isRepeat == true){
-			this.allGuesses.pop(main.toWordJS.currentLetter);
+			this.allGuesses.pop(main.toWordJS.userLetter);
 
 			return true;
 		}
-		//Letter has not been guessed and was a wrong guess, put the this.currentLetter in incorrectGuesses.
+		//Letter has not been guessed and was a wrong guess, put the this.userLetter in incorrectGuesses.
 		if (this.isRepeat == false && this.isMatch == false){
-			this.incorrectGuesses.push(main.toWordJS.currentLetter);
+			this.incorrectGuesses.push(main.toWordJS.userLetter);
 			this.guessesRemaining--;
 
 			return true;
 		}
-		//Letter has not been guessed and was a correct guess, put the this.currentLetter in correctGuesses.
+		//Letter has not been guessed and was a correct guess, put the this.userLetter in correctGuesses.
 		if (this.isRepeat == false && this.isMatch == true){
-			this.correctGuesses.push(main.toWordJS.currentLetter);
+			this.correctGuesses.push(main.toWordJS.userLetter);
 			this.guessesRemaining--;
 
 			return true;
