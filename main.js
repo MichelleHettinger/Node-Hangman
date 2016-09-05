@@ -16,26 +16,22 @@ var playerStuff = {
 		promptUser();
 	},
 	startRound: function(){
-			this.roundComplete = false;
+		this.roundComplete = false;
 
-			game.toMainJS.pickWord();
-			console.log(game.toMainJS.chosenWord);
-			letter.toMainJS.displayNewGuess();
+		game.toMainJS.pickWord();
+		console.log(game.toMainJS.chosenWord);
+		letter.toMainJS.displayNewGuess();
 
-
-
-
+		promptUser();
 	},
 	resetVariables: function(){
-
+		letter.toMainJS.correctGuessesInOrder= [];
 		word.toMainJS.allGuesses = [];
 		word.toMainJS.incorrectGuesses = [];
 		word.toMainJS.correctGuesses = [];
 		word.toMainJS.isMatch = null;
 		word.toMainJS.isRepeat = null;
 		word.toMainJS.guessesRemaining = 15;
-
-		console.log(this.roundComplete);
 	}
 }
 
@@ -58,7 +54,8 @@ var promptUser = function() {
 
 		//Store the input letter and push it into an allGuesses array
        	playerStuff.userLetter = answers.letter;
-        word.toMainJS.allGuesses.push(answers.letter);
+    	playerStuff.userLetter = playerStuff.userLetter.toUpperCase();
+        word.toMainJS.allGuesses.push(playerStuff.userLetter);
 
         //Check the user input against the random word
         word.toMainJS.checkRepeat();
@@ -73,12 +70,9 @@ var promptUser = function() {
 		letter.toMainJS.checkProgress();
 
 		if (playerStuff.roundComplete == false){
-			console.log("Round in progress");
-
 		    promptUser();
 		}
 		else if (playerStuff.roundComplete == true){
-			console.log("Round NOT in progress");
 			playerStuff.startRound();
 		}
 

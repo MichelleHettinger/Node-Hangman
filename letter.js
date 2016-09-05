@@ -1,5 +1,6 @@
 //   * `letter.js` should control whether or not a letter appears as a "_" or as itself on-screen.
 
+var q = require("q");							//NPM promise package
 
 var game = require("./game.js");				//The randomly chosen word comes from game.js
 var word = require("./word.js")	;				//After correct or not has been determined
@@ -55,13 +56,11 @@ var displayObject = {
 			main.toLetterJS.roundComplete = true;
 			word.toLetterJS.winCount++;
 
-			console.log("\n You win!");
+			console.log("\nYou win!");
 			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
 			console.log("-------------------------------------");
 
 			main.toLetterJS.resetVariables();
-			main.toLetterJS.startRound();
-
 		}
 		//If the number of guesses remaining is zero, the user has lost.
 		if (word.toLetterJS.guessesRemaining == 0){
@@ -69,12 +68,11 @@ var displayObject = {
 			main.toLetterJS.roundComplete = true;
 			word.toLetterJS.loseCount++;
 
-			console.log("You lose!");
+			console.log("\NYou lose!");
 			console.log("Wins: " + word.toLetterJS.winCount + "--" + "Losses: " + word.toLetterJS.loseCount);
 			console.log("-------------------------------------");
 
 			main.toLetterJS.resetVariables();
-			main.toLetterJS.startRound();
 
 		}
 	}
